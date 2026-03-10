@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 
 const videos = [
 {
@@ -28,8 +30,7 @@ const videos = [
 export default function YoutubeScreen() {
   return (
     <View style={styles.container}>
-      
-      {/* Header com logo do YouTube */}
+      {/* Cabecalho com logo do YouTube */}
       <View style={styles.header}>
         <View style={styles.logoContainer}>
           <Ionicons name="logo-youtube" size={28} color="#FF0000" />
@@ -51,9 +52,9 @@ export default function YoutubeScreen() {
         ))}
       </ScrollView>
 
-      {/* Video List */}
+      {/* Lista de videos */}
       <ScrollView>
-        {/* Card patrocinado (Sicredi) */}
+        {/* Card de patrocinio (Sicredi) */}
         <View style={styles.sponsoredCard}>
           <View style={styles.sponsoredHeader}>
             <Text style={styles.sponsoredTitle}>Poupança Premiada Sicredi</Text>
@@ -87,14 +88,24 @@ export default function YoutubeScreen() {
         ))}
       </ScrollView>
 
-      {/* Bottom Navigation */}
+      {/* Bloco de navegacao: cada botao abre uma rota do Expo Router */}
       <View style={styles.bottomNav}>
-        <Ionicons name="home" size={24} color="#fff" />
-        <Ionicons name="play-circle" size={24} color="#fff" />
-        <Ionicons name="albums" size={24} color="#fff" />
-        <Ionicons name="person" size={24} color="#fff" />
-      </View>
+        <TouchableOpacity onPress={() => router.push("/youtube")}>
+          <Ionicons name="home-outline" size={24} color="#fff" />
+        </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => router.push("/shorts")}> 
+          <Ionicons name="play-circle-outline" size={24} color="#fff" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/inscricoes")}>
+          <Ionicons name="albums-outline" size={24} color="#fff" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => router.push("/perfil")}>
+          <Ionicons name="person-outline" size={24} color="#fff" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -177,7 +188,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   videoCard: {
-    marginBottom: 20,
+    marginTop: 40,
   },
   thumbnail: {
     width: "100%",
