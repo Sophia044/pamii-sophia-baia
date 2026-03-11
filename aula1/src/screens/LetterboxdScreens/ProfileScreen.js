@@ -9,7 +9,7 @@ export default function ProfileScreen() {
         {/* Header */}
         <View style={styles.header}>
           <Image
-            source={require("../../../assets/letterboxd/avatar.png")}
+            source={require("../../../assets/letterboxd/avatar1.png")}
             style={styles.avatar}
           />
 
@@ -50,7 +50,7 @@ export default function ProfileScreen() {
 
           <View style={styles.filmRow}>
             <Image
-              source={require("../../../assets/letterboxd/clube da luta.png")}
+              source={require("../../../assets/letterboxd/silencio dos incentes.png")}
               style={styles.poster}
             />
             <Image
@@ -58,7 +58,7 @@ export default function ProfileScreen() {
               style={styles.poster}
             />
             <Image
-              source={require("../../../assets/letterboxd/parasita.png")}
+              source={require("../../../assets/letterboxd/cidade de deus.png")}
               style={styles.poster}
             />
             <Image
