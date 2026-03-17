@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, ScrollView, Image, TextInput } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 const chats = [
@@ -53,17 +54,17 @@ const chats = [
   {
     id: 7,
     name: "Siles",
-    message: "é MB pra todo mundo",
+    message: "aproveitem",
     time: "16:06",
     unread: 0,
-    avatar: require("../../assets/whatsapp/siles2.png"),
+    avatar: require("../../assets/whatsapp/user1.png"),
   },
 ];
 
 export default function WhatsappScreen() {
   return (
     <View style={styles.container}>
-      
+
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>WhatsApp</Text>
@@ -104,27 +105,28 @@ export default function WhatsappScreen() {
       {/* Chats */}
       <ScrollView showsVerticalScrollIndicator={false}>
         {chats.map((chat) => (
-          <View key={chat.id} style={styles.chatItem}>
-            
-            <Image source={chat.avatar} style={styles.avatar} />
+          <Link href="/whatstelachat" asChild key={chat.id}>
+            <TouchableOpacity style={styles.chatItem} activeOpacity={0.7}>
+              <Image source={chat.avatar} style={styles.avatar} />
 
-            <View style={styles.chatInfo}>
-              <View style={styles.chatHeader}>
-                <Text style={styles.name}>{chat.name}</Text>
-                <Text style={styles.time}>{chat.time}</Text>
+              <View style={styles.chatInfo}>
+                <View style={styles.chatHeader}>
+                  <Text style={styles.name}>{chat.name}</Text>
+                  <Text style={styles.time}>{chat.time}</Text>
+                </View>
+                <View style={styles.messageContainer}>
+                  <Text style={styles.message} numberOfLines={1}>
+                    {chat.message}
+                  </Text>
+                  {chat.unread > 0 && (
+                    <View style={styles.unreadBadge}>
+                      <Text style={styles.unreadText}>{chat.unread}</Text>
+                    </View>
+                  )}
+                </View>
               </View>
-              <View style={styles.messageContainer}>
-                <Text style={styles.message} numberOfLines={1}>
-                  {chat.message}
-                </Text>
-                {chat.unread > 0 && (
-                  <View style={styles.unreadBadge}>
-                    <Text style={styles.unreadText}>{chat.unread}</Text>
-                  </View>
-                )}
-              </View>
-            </View>
-          </View>
+            </TouchableOpacity>
+          </Link>
         ))}
       </ScrollView>
 
