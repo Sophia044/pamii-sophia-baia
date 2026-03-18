@@ -1,4 +1,4 @@
-import ShortsScreen from "../screens/YoutubeScreens/Shorts";
+import ShortsScreen from "../screens/youtubescreens/shorts";
 
 export default function Shorts() {
   return <ShortsScreen />;

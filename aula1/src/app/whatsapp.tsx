@@ -1,4 +1,4 @@
-import WhatsappScreen from "../screens/WhatsappScreen";
+import WhatsappScreen from "../screens/whatsappscreen";
 
 export default function Whatsapp() {
   return <WhatsappScreen />;

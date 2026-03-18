@@ -1,4 +1,4 @@
-import PerfilScreen from "../screens/YoutubeScreens/Perfil";
+import PerfilScreen from "../screens/youtubescreens/perfil";
 
 export default function Perfil() {
   return <PerfilScreen />;

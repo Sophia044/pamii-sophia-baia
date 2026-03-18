@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import {
     Image,
+    ImageBackground,
     Platform,
     ScrollView,
     StyleSheet,
@@ -146,23 +147,29 @@ export default function WhatsTelaChatScreen() {
                 </View>
             </View>
 
-            {/* Área de mensagens */}
-            <ScrollView
+            {/* Área de mensagens com Wallpaper */}
+            <ImageBackground
+                source={require("../../assets/whatsapp/user1.png")} // Utilizando imagem do seu projeto
                 style={styles.chatArea}
-                contentContainerStyle={styles.chatContent}
-                showsVerticalScrollIndicator={false}
+                imageStyle={{ opacity: 0.15 }} // Opacidade reduzida
+                resizeMode="cover"
             >
-                <EncryptionNotice />
-                <DateBadge label="HOJE" />
+                <ScrollView
+                    contentContainerStyle={styles.chatContent}
+                    showsVerticalScrollIndicator={false}
+                >
+                    <EncryptionNotice />
+                    <DateBadge label="HOJE" />
 
-                {MESSAGES.map((msg) =>
-                    msg.type === "received" ? (
-                        <ReceivedBubble key={msg.id} text={msg.text} time={msg.time} />
-                    ) : (
-                        <SentBubble key={msg.id} text={msg.text} time={msg.time} read={msg.read} />
-                    )
-                )}
-            </ScrollView>
+                    {MESSAGES.map((msg) =>
+                        msg.type === "received" ? (
+                            <ReceivedBubble key={msg.id} text={msg.text} time={msg.time} />
+                        ) : (
+                            <SentBubble key={msg.id} text={msg.text} time={msg.time} read={msg.read} />
+                        )
+                    )}
+                </ScrollView>
+            </ImageBackground>
 
             {/* Barra de input */}
             <View style={styles.inputBar}>

@@ -22,25 +22,25 @@ const newFromFriends = [
 
 const renderStars = (rating) => {
   if (!rating) return null;
-  
+
   const fullStars = Math.floor(rating);
   const halfStar = rating % 1 !== 0;
   const stars = [];
-  
+
   for (let i = 0; i < fullStars; i++) {
     stars.push(<Ionicons key={`full-${i}`} name="star" size={12} color="#00e054" />);
   }
   if (halfStar) {
     stars.push(<Ionicons key="half" name="star-half" size={12} color="#00e054" />);
   }
-  
+
   return <View style={styles.starsContainer}>{stars}</View>;
 };
 
 export default function LetterboxdScreen() {
   return (
     <View style={styles.container}>
-      
+
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.logo}>Letterboxd</Text>
@@ -67,7 +67,7 @@ export default function LetterboxdScreen() {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        
+
         {/* PRO Banner */}
         <View style={styles.proBanner}>
           <Text style={styles.proTitle}>PRO</Text>
@@ -113,28 +113,28 @@ export default function LetterboxdScreen() {
         {/* Filmes listados (formato texto) - como na primeira imagem */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Films</Text>
-          
+
           <View style={styles.filmListItem}>
             <Text style={styles.filmTitle}>500 DAYS OF THE FUTURE</Text>
             <Text style={styles.filmYear}>(2023)</Text>
           </View>
           <Text style={styles.filmDirector}>Directed by Fede Alvarez</Text>
           <Text style={styles.filmCast}>Starring Pedro Pascal, Emilia Jones, Dave Bautista</Text>
-          
+
           <View style={[styles.filmListItem, styles.filmMarginTop]}>
             <Text style={styles.filmTitle}>ETERNAL SUNSHINE</Text>
             <Text style={styles.filmYear}>(2022)</Text>
           </View>
           <Text style={styles.filmDirector}>Directed by Yorgos Lanthimos</Text>
           <Text style={styles.filmCast}>Starring Joseph Quinn, Emily Watson</Text>
-          
+
           <View style={[styles.filmListItem, styles.filmMarginTop]}>
             <Text style={styles.filmTitle}>HAMNET</Text>
             <Text style={styles.filmYear}>(2024)</Text>
           </View>
           <Text style={styles.filmDirector}>Directed by Chloe Zhao</Text>
           <Text style={styles.filmCast}>Starring Paul Mescal, Jessie Buckley</Text>
-          
+
           <View style={[styles.filmListItem, styles.filmMarginTop]}>
             <Text style={styles.filmTitle}>MARTY SUPREME</Text>
             <Text style={styles.filmYear}>(2023)</Text>
@@ -163,7 +163,6 @@ export default function LetterboxdScreen() {
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}
           onPress={() => router.push("/profile")}>
-          onPress={() => router.push("/profile")}
           <Ionicons name="person" size={22} color="#9ab" />
           <Text style={styles.navText}>Profile</Text>
         </TouchableOpacity>

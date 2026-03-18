@@ -1,3 +1,3 @@
-import ProfileScreen from "../screens/LetterboxdScreens/ProfileScreen";
+import ProfileScreen from "../screens/letterboxdscreens/profilescreen";
 
 export default ProfileScreen;
