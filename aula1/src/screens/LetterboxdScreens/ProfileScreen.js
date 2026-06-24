@@ -1,5 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { Avatar, AvatarImage, AvatarFallbackText } from "@/src/components/ui/avatar";
+import { Button, ButtonText } from "@/src/components/ui/button";
 
 export default function ProfileScreen() {
   return (
@@ -8,17 +10,23 @@ export default function ProfileScreen() {
 
         {/* Header */}
         <View style={styles.header}>
-          <Image
-            source={require("../../../assets/letterboxd/avatar1.png")}
-            style={styles.avatar}
-          />
+          <Avatar size="xl" className="mb-2">
+            <AvatarImage
+              source={require("../../../assets/letterboxd/avatar1.png")}
+            />
+            <AvatarFallbackText>Sophia</AvatarFallbackText>
+          </Avatar>
 
           <Text style={styles.username}>Sophia</Text>
           <Text style={styles.handle}>@dunsparce</Text>
 
-          <TouchableOpacity style={styles.editButton}>
-            <Text style={styles.editText}>Edit Profile</Text>
-          </TouchableOpacity>
+          <Button
+            variant="outline"
+            size="sm"
+            className="rounded-full border-[#00e054] mt-2"
+          >
+            <ButtonText className="text-[#00e054] text-xs">Edit Profile</ButtonText>
+          </Button>
         </View>
 
         {/* Stats */}
@@ -49,22 +57,30 @@ export default function ProfileScreen() {
           <Text style={styles.sectionTitle}>Favorite Films</Text>
 
           <View style={styles.filmRow}>
-            <Image
-              source={require("../../../assets/letterboxd/silencio dos incentes.png")}
-              style={styles.poster}
-            />
-            <Image
-              source={require("../../../assets/letterboxd/brilho eterno.png")}
-              style={styles.poster}
-            />
-            <Image
-              source={require("../../../assets/letterboxd/cidade de deus.png")}
-              style={styles.poster}
-            />
-            <Image
-              source={require("../../../assets/letterboxd/iluminado.png")}
-              style={styles.poster}
-            />
+            <Avatar size="xl" className="rounded">
+              <AvatarImage
+                source={require("../../../assets/letterboxd/silencio dos incentes.png")}
+              />
+              <AvatarFallbackText>F1</AvatarFallbackText>
+            </Avatar>
+            <Avatar size="xl" className="rounded">
+              <AvatarImage
+                source={require("../../../assets/letterboxd/brilho eterno.png")}
+              />
+              <AvatarFallbackText>F2</AvatarFallbackText>
+            </Avatar>
+            <Avatar size="xl" className="rounded">
+              <AvatarImage
+                source={require("../../../assets/letterboxd/cidade de deus.png")}
+              />
+              <AvatarFallbackText>F3</AvatarFallbackText>
+            </Avatar>
+            <Avatar size="xl" className="rounded">
+              <AvatarImage
+                source={require("../../../assets/letterboxd/iluminado.png")}
+              />
+              <AvatarFallbackText>F4</AvatarFallbackText>
+            </Avatar>
           </View>
         </View>
 
@@ -86,13 +102,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
 
-  avatar: {
-    width: 90,
-    height: 90,
-    borderRadius: 50,
-    marginBottom: 10,
-  },
-
   username: {
     color: "#fff",
     fontSize: 20,
@@ -103,19 +112,6 @@ const styles = StyleSheet.create({
     color: "#9ab",
     fontSize: 13,
     marginBottom: 10,
-  },
-
-  editButton: {
-    borderWidth: 1,
-    borderColor: "#00e054",
-    paddingHorizontal: 15,
-    paddingVertical: 6,
-    borderRadius: 20,
-  },
-
-  editText: {
-    color: "#00e054",
-    fontSize: 13,
   },
 
   statsContainer: {

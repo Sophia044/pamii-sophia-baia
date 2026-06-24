@@ -1,6 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
+import { Card } from "@/src/components/ui/card";
+import { Button, ButtonText } from "@/src/components/ui/button";
+import { Badge, BadgeText } from "@/src/components/ui/badge";
 
 // Primeira linha de filmes - Popular this week
 const popularThisWeek = [
@@ -34,7 +37,18 @@ const renderStars = (rating) => {
     stars.push(<Ionicons key="half" name="star-half" size={12} color="#00e054" />);
   }
 
-  return <View style={styles.starsContainer}>{stars}</View>;
+  return (
+    <Badge
+      variant="outline"
+      action="success"
+      size="sm"
+      className="mt-1 self-start border-0 bg-transparent px-0"
+    >
+      <BadgeText className="text-[#00e054]">
+        <View style={{ flexDirection: 'row' }}>{stars}</View>
+      </BadgeText>
+    </Badge>
+  );
 };
 
 export default function LetterboxdScreen() {
@@ -68,16 +82,20 @@ export default function LetterboxdScreen() {
 
       <ScrollView showsVerticalScrollIndicator={false}>
 
-        {/* PRO Banner */}
-        <View style={styles.proBanner}>
+        {/* PRO Banner — Gluestack Card */}
+        <Card variant="outline" className="m-4 p-4 bg-[#1f2a30] border-[#2c3e4f]">
           <Text style={styles.proTitle}>PRO</Text>
           <Text style={styles.proText}>
             Remove ads, add profile stats, activity and service filters, favorite streaming services, watchlist alerts and more by upgrading to Pro.
           </Text>
-          <TouchableOpacity style={styles.proButton}>
-            <Text style={styles.proButtonText}>Upgrade to Pro</Text>
-          </TouchableOpacity>
-        </View>
+          <Button
+            variant="outline"
+            size="sm"
+            className="self-start mt-2 rounded-full border-[#456]"
+          >
+            <ButtonText className="text-white text-xs font-semibold">Upgrade to Pro</ButtonText>
+          </Button>
+        </Card>
 
         {/* Popular this week - Primeira linha de filmes */}
         <View style={styles.section}>
@@ -110,7 +128,7 @@ export default function LetterboxdScreen() {
           </ScrollView>
         </View>
 
-        {/* Filmes listados (formato texto) - como na primeira imagem */}
+        {/* Filmes listados (formato texto) */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Films</Text>
 
@@ -220,14 +238,6 @@ const styles = StyleSheet.create({
   tabTextActive: {
     color: "#fff",
   },
-  proBanner: {
-    backgroundColor: "#1f2a30",
-    margin: 15,
-    padding: 15,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#2c3e4f",
-  },
   proTitle: {
     color: "#ffd966",
     fontSize: 16,
@@ -239,18 +249,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 18,
     marginBottom: 12,
-  },
-  proButton: {
-    backgroundColor: "#456",
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    alignSelf: "flex-start",
-  },
-  proButtonText: {
-    color: "#fff",
-    fontSize: 13,
-    fontWeight: "600",
   },
   section: {
     marginTop: 20,
